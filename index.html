@@ -4,74 +4,92 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mi Amigo Latino Radio</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
     body {
       font-family: 'Roboto', sans-serif;
-      background: linear-gradient(135deg, #ff6a00, #ee0979);
+      background: linear-gradient(135deg, #ff0080, #ffbf00);
       color: white;
-      text-align: center;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
       padding: 20px;
+      overflow-x: hidden;
     }
     header {
-      margin-bottom: 30px;
+      text-align: center;
+      margin-bottom: 20px;
+      animation: fadeIn 2s ease-out;
     }
     .logo {
-      max-width: 280px;
-      animation: spin 10s linear infinite;
+      width: 240px;
+      animation: pulse 4s infinite;
     }
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
     }
     h1 {
       font-family: 'Anton', sans-serif;
       font-size: 2.5rem;
-      margin-top: 10px;
+      margin-top: 15px;
+      color: #fff;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
     }
     .player-container {
-      background: rgba(0, 0, 0, 0.3);
-      padding: 20px;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 25px;
       border-radius: 20px;
-      margin: 20px auto;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
       max-width: 400px;
+      width: 100%;
+      margin: 20px auto;
+      animation: fadeIn 2s ease-out 0.5s both;
     }
     audio {
       width: 100%;
-      outline: none;
       border-radius: 10px;
+      background-color: #fff;
     }
     .buttons {
-      margin-top: 20px;
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
       gap: 15px;
+      margin-top: 20px;
     }
     .btn {
-      background: white;
-      color: #ee0979;
-      padding: 10px 20px;
+      background: #fff;
+      color: #ff0080;
+      padding: 12px 24px;
       border: none;
-      border-radius: 30px;
+      border-radius: 25px;
       font-weight: bold;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
       text-decoration: none;
-      transition: 0.3s;
     }
     .btn:hover {
-      background: #ff6a00;
-      color: white;
+      background: #ffbf00;
+      color: #fff;
     }
     .contacto {
       margin-top: 30px;
-      font-size: 1.1rem;
+      font-size: 1.2rem;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
     }
   </style>
 </head>
