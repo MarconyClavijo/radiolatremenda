@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi Amigo Latino Radio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(135deg, #ff6a00, #ee0979);
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+    header {
+      margin-bottom: 30px;
+    }
+    .logo {
+      max-width: 280px;
+      animation: spin 10s linear infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    h1 {
+      font-family: 'Anton', sans-serif;
+      font-size: 2.5rem;
+      margin-top: 10px;
+    }
+    .player-container {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 20px;
+      border-radius: 20px;
+      margin: 20px auto;
+      max-width: 400px;
+    }
+    audio {
+      width: 100%;
+      outline: none;
+      border-radius: 10px;
+    }
+    .buttons {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+    .btn {
+      background: white;
+      color: #ee0979;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 30px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+    .btn:hover {
+      background: #ff6a00;
+      color: white;
+    }
+    .contacto {
+      margin-top: 30px;
+      font-size: 1.1rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="http://imgfz.com/i/rQgKoJ8.png" alt="Logo Radio" class="logo">
+    <h1>Mi Amigo Latino Radio</h1>
+  </header>
+
+  <div class="player-container">
+    <audio id="radioPlayer" preload="none">
+      <source src="https://sonic.globalstream.pro/8138" type="audio/mpeg">
+      Tu navegador no soporta el reproductor de audio.
+    </audio>
+    <div class="buttons">
+      <button class="btn" onclick="document.getElementById('radioPlayer').play()">▶️ Play</button>
+      <button class="btn" onclick="document.getElementById('radioPlayer').pause()">⏹️ Stop</button>
+    </div>
+  </div>
+
+  <div class="buttons">
+    <a href="https://play.google.com/store/apps/details?id=com.innovatel.miamigolatino" class="btn" target="_blank">📲 Descargar App</a>
+    <a href="https://www.facebook.com/share/1TzBwUaoqN/" class="btn" target="_blank">🔗 Facebook</a>
+  </div>
+
+  <div class="contacto">
+    📞 Contacto: +81 80-3086-5131
+  </div>
+</body>
+</html>
