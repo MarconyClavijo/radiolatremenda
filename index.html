@@ -1,80 +1,79 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Radio La Tremenda</title>
   <style>
     body {
       margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #ff0000, #ff9900);
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #e60000, #ff8000);
       color: #fff;
-      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
     }
-
     header {
       padding: 20px;
-      background-color: rgba(0, 0, 0, 0.5);
+      text-align: center;
     }
-
     header img {
-      width: 120px;
-      border-radius: 50%;
-      box-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
+      max-width: 150px;
       animation: float 3s ease-in-out infinite;
     }
-
     @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
+      0%,100% { transform: translateY(0); }
+      50%   { transform: translateY(-8px); }
     }
-
-    h1 {
-      margin-top: 15px;
-      font-size: 2em;
-      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+    header h1 {
+      margin: 10px 0 0;
+      font-size: 2.5em;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
     }
-
-    .player-container {
-      margin: 40px auto;
-      background-color: rgba(0, 0, 0, 0.4);
-      border-radius: 20px;
-      padding: 30px;
+    .player-wrapper {
       width: 90%;
       max-width: 500px;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+      background: rgba(0,0,0,0.4);
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.6);
+      margin: 30px 0;
     }
-
-    audio {
+    .audio-player {
       width: 100%;
-      outline: none;
+      border: none;
     }
-
     footer {
-      margin-top: 40px;
+      margin-top: auto;
       padding: 15px;
-      background-color: rgba(0, 0, 0, 0.3);
       font-size: 0.9em;
+      background: rgba(0,0,0,0.3);
+      width: 100%;
+      text-align: center;
     }
   </style>
 </head>
 <body>
   <header>
     <img src="http://imgfz.com/i/h7TrEm5.png" alt="Logo La Tremenda">
-    <h1>Radio La Tremenda</h1>
+    <h1>🎙️ Radio La Tremenda</h1>
   </header>
 
-  <div class="player-container">
-    <h2>🎙️ Escúchanos en vivo</h2>
+  <div class="player-wrapper">
+    <!-- Opcional iframe si tu servidor ofrece interfaz web -->
+    <!-- <iframe class="audio-player" src="URL_WEB_INTERFACE_DEL_STREAM" scrolling="no" allow="autoplay"></iframe> -->
+
+    <!-- Reproductor HTML5 personalizado -->
     <audio controls autoplay>
       <source src="https://uk20freenew.listen2myradio.com/live.mp3?typeportmount=s1_17951_stream_983888271" type="audio/mpeg">
-      Tu navegador no soporta el reproductor de audio.
+      Tu navegador no soporta este reproductor.
     </audio>
   </div>
 
   <footer>
-    Diseño y desarrollo web por Marcony Clavijo | Innovación que inspira &copy; 2025
+    Diseño web por Marcony Clavijo | © 2025 Radio La Tremenda
   </footer>
 </body>
 </html>
