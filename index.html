@@ -1,124 +1,80 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mi Amigo Latino Radio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Radio La Tremenda</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
     body {
-      font-family: 'Roboto', sans-serif;
-      background: linear-gradient(135deg, #ff0080, #ffbf00);
-      color: white;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      padding: 20px;
-      overflow-x: hidden;
-    }
-    header {
-      text-align: center;
-      margin-bottom: 20px;
-      animation: fadeIn 2s ease-out;
-    }
-    .logo {
-      width: 240px;
-      animation: pulse 4s infinite;
-    }
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-      100% { transform: scale(1); }
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    h1 {
-      font-family: 'Anton', sans-serif;
-      font-size: 2.5rem;
-      margin-top: 15px;
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #ff0000, #ff9900);
       color: #fff;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+      text-align: center;
     }
+
+    header {
+      padding: 20px;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    header img {
+      width: 120px;
+      border-radius: 50%;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    h1 {
+      margin-top: 15px;
+      font-size: 2em;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+    }
+
     .player-container {
-      background: rgba(0, 0, 0, 0.4);
-      padding: 25px;
+      margin: 40px auto;
+      background-color: rgba(0, 0, 0, 0.4);
       border-radius: 20px;
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
-      max-width: 400px;
-      width: 100%;
-      margin: 20px auto;
-      animation: fadeIn 2s ease-out 0.5s both;
+      padding: 30px;
+      width: 90%;
+      max-width: 500px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
     }
+
     audio {
       width: 100%;
-      border-radius: 10px;
-      background-color: #fff;
+      outline: none;
     }
-    .buttons {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 15px;
-      margin-top: 20px;
-    }
-    .btn {
-      background: #fff;
-      color: #ff0080;
-      padding: 12px 24px;
-      border: none;
-      border-radius: 25px;
-      font-weight: bold;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      text-decoration: none;
-    }
-    .btn:hover {
-      background: #ffbf00;
-      color: #fff;
-    }
+
     footer {
       margin-top: 40px;
-      font-size: 0.9rem;
-      text-align: center;
-      color: rgba(255, 255, 255, 0.8);
+      padding: 15px;
+      background-color: rgba(0, 0, 0, 0.3);
+      font-size: 0.9em;
     }
   </style>
 </head>
 <body>
   <header>
-    <img src="http://imgfz.com/i/rQgKoJ8.png" alt="Logo Radio" class="logo">
-    <h1>Mi Amigo Latino Radio</h1>
+    <img src="http://imgfz.com/i/h7TrEm5.png" alt="Logo La Tremenda">
+    <h1>Radio La Tremenda</h1>
   </header>
 
   <div class="player-container">
-    <audio id="radioPlayer" preload="none">
-      <source src="https://sonic.globalstream.pro/8138/stream" type="audio/mpeg">
+    <h2>🎙️ Escúchanos en vivo</h2>
+    <audio controls autoplay>
+      <source src="https://uk20freenew.listen2myradio.com/live.mp3?typeportmount=s1_17951_stream_983888271" type="audio/mpeg">
       Tu navegador no soporta el reproductor de audio.
     </audio>
-    <div class="buttons">
-      <button class="btn" onclick="document.getElementById('radioPlayer').play()">▶️ Play</button>
-      <button class="btn" onclick="document.getElementById('radioPlayer').pause()">⏹️ Stop</button>
-    </div>
-  </div>
-
-  <div class="buttons">
-    <a href="https://play.google.com/store/apps/details?id=com.innovatel.miamigolatino" class="btn" target="_blank">📲 Descargar App</a>
-    <a href="https://www.facebook.com/share/1TzBwUaoqN/" class="btn" target="_blank">🔗 Facebook</a>
-    <a href="https://wa.me/818030865131" class="btn" target="_blank">💬 Contacto por WhatsApp</a>
   </div>
 
   <footer>
-    Diseño y desarrollo web por <strong>Marcony Clavijo</strong> | Innovación que inspira © 2025
+    Diseño y desarrollo web por Marcony Clavijo | Innovación que inspira &copy; 2025
   </footer>
 </body>
 </html>
