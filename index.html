@@ -54,6 +54,7 @@
       border-radius: 30px;
       cursor: pointer;
       transition: transform 0.2s, box-shadow 0.3s;
+      position: relative;
     }
 
     .btn:hover {
@@ -61,17 +62,14 @@
       box-shadow: 0 0 20px #ff0055;
     }
 
-    .loading {
-      font-size: 1.1em;
-      margin-top: 10px;
-      color: #ffffcc;
-      display: none;
-      animation: blink 1.2s infinite;
+    .spinner {
+      animation: spin 1s linear infinite;
+      display: inline-block;
     }
 
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.4; }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
     }
 
     footer {
@@ -88,11 +86,9 @@
   <div class="title">🎧 Radio La Tremenda</div>
 
   <div class="controls">
-    <button class="btn" onclick="playRadio()">▶ Play</button>
+    <button id="playBtn" class="btn" onclick="playRadio()">▶ Play</button>
     <button class="btn" onclick="stopRadio()">■ Stop</button>
   </div>
-
-  <div id="loading" class="loading">⏳ Cargando audio...</div>
 
   <audio id="radio" preload="none" src="https://uk20freenew.listen2myradio.com/live.mp3?typeportmount=s1_17951_stream_983888271"></audio>
 
@@ -100,24 +96,23 @@
 
   <script>
     const audio = document.getElementById('radio');
-    const loading = document.getElementById('loading');
+    const playBtn = document.getElementById('playBtn');
 
     function playRadio() {
-      loading.style.display = 'block';
+      playBtn.innerHTML = '<span class="spinner">🔄</span> Cargando...';
       audio.load();
       audio.play()
         .then(() => {
-          // Espera a que realmente empiece a sonar
           if (audio.readyState >= 3) {
-            loading.style.display = 'none';
+            playBtn.innerHTML = '▶ Play';
           } else {
             audio.addEventListener('canplay', () => {
-              loading.style.display = 'none';
+              playBtn.innerHTML = '▶ Play';
             }, { once: true });
           }
         })
         .catch(err => {
-          loading.textContent = '⚠️ Error al reproducir';
+          playBtn.innerHTML = '❌ Error';
           console.error('Error:', err);
         });
     }
@@ -125,7 +120,7 @@
     function stopRadio() {
       audio.pause();
       audio.currentTime = 0;
-      loading.style.display = 'none';
+      playBtn.innerHTML = '▶ Play';
     }
   </script>
 </body>
