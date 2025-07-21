@@ -61,6 +61,19 @@
       box-shadow: 0 0 20px #ff0055;
     }
 
+    .loading {
+      font-size: 1.1em;
+      margin-top: 10px;
+      color: #ffffcc;
+      display: none;
+      animation: blink 1.2s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
     footer {
       position: absolute;
       bottom: 15px;
@@ -79,21 +92,40 @@
     <button class="btn" onclick="stopRadio()">■ Stop</button>
   </div>
 
+  <div id="loading" class="loading">⏳ Cargando audio...</div>
+
   <audio id="radio" preload="none" src="https://uk20freenew.listen2myradio.com/live.mp3?typeportmount=s1_17951_stream_983888271"></audio>
 
   <footer>Diseño web por Marcony Clavijo | © 2025</footer>
 
   <script>
     const audio = document.getElementById('radio');
+    const loading = document.getElementById('loading');
 
     function playRadio() {
+      loading.style.display = 'block';
       audio.load();
-      audio.play().catch(e => console.log('Autoplay bloqueado'));
+      audio.play()
+        .then(() => {
+          // Espera a que realmente empiece a sonar
+          if (audio.readyState >= 3) {
+            loading.style.display = 'none';
+          } else {
+            audio.addEventListener('canplay', () => {
+              loading.style.display = 'none';
+            }, { once: true });
+          }
+        })
+        .catch(err => {
+          loading.textContent = '⚠️ Error al reproducir';
+          console.error('Error:', err);
+        });
     }
 
     function stopRadio() {
       audio.pause();
       audio.currentTime = 0;
+      loading.style.display = 'none';
     }
   </script>
 </body>
