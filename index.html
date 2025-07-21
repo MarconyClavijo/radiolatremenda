@@ -1,79 +1,99 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
   <title>Radio La Tremenda</title>
   <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
     body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #e60000, #ff8000);
+      background: #111;
       color: #fff;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-height: 100vh;
+      font-family: sans-serif;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      min-height:100vh;
+      justify-content:center;
+      background: #000;
     }
-    header {
-      padding: 20px;
-      text-align: center;
+    .player {
+      background:#222;
+      border-radius:12px;
+      padding:20px;
+      max-width:400px;
+      width:90%;
+      text-align:center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
     }
-    header img {
-      max-width: 150px;
-      animation: float 3s ease-in-out infinite;
+    .player img {
+      width:120px;
+      border-radius:50%;
+      margin-bottom:15px;
     }
-    @keyframes float {
-      0%,100% { transform: translateY(0); }
-      50%   { transform: translateY(-8px); }
+    .player h1 {
+      font-size:1.6rem;
+      margin-bottom:10px;
+      color: #ff4500;
     }
-    header h1 {
-      margin: 10px 0 0;
-      font-size: 2.5em;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    .audio-controls {
+      display:flex;
+      align-items:center;
+      justify-content: center;
+      margin-top:10px;
     }
-    .player-wrapper {
-      width: 90%;
-      max-width: 500px;
-      background: rgba(0,0,0,0.4);
-      border-radius: 20px;
-      padding: 20px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.6);
-      margin: 30px 0;
+    .btn {
+      background:none;
+      border:none;
+      color:#ff4500;
+      font-size:2rem;
+      margin:0 20px;
+      cursor:pointer;
     }
-    .audio-player {
-      width: 100%;
-      border: none;
-    }
-    footer {
-      margin-top: auto;
-      padding: 15px;
-      font-size: 0.9em;
-      background: rgba(0,0,0,0.3);
-      width: 100%;
-      text-align: center;
+    .btn:focus { outline:none; }
+    input[type=range] {
+      width:150px;
+      accent-color:#ff4500;
     }
   </style>
 </head>
 <body>
-  <header>
+
+  <div class="player">
     <img src="http://imgfz.com/i/h7TrEm5.png" alt="Logo La Tremenda">
-    <h1>🎙️ Radio La Tremenda</h1>
-  </header>
-
-  <div class="player-wrapper">
-    <!-- Opcional iframe si tu servidor ofrece interfaz web -->
-    <!-- <iframe class="audio-player" src="URL_WEB_INTERFACE_DEL_STREAM" scrolling="no" allow="autoplay"></iframe> -->
-
-    <!-- Reproductor HTML5 personalizado -->
-    <audio controls autoplay>
-      <source src="https://uk20freenew.listen2myradio.com/live.mp3?typeportmount=s1_17951_stream_983888271" type="audio/mpeg">
-      Tu navegador no soporta este reproductor.
-    </audio>
+    <h1>🎧 La Tremenda Live</h1>
+    <div class="audio-controls">
+      <button class="btn" id="play-pause">►</button>
+      <input type="range" id="volume" min="0" max="1" step="0.01" value="1">
+    </div>
   </div>
 
-  <footer>
-    Diseño web por Marcony Clavijo | © 2025 Radio La Tremenda
-  </footer>
+  <audio id="audio" src="https://uk20freenew.listen2myradio.com/live.mp3?typeportmount=s1_17951_stream_983888271"></audio>
+
+  <script>
+    const audio = document.getElementById('audio');
+    const btn = document.getElementById('play-pause');
+    const vol = document.getElementById('volume');
+
+    btn.addEventListener('click', () => {
+      if (audio.paused) {
+        audio.play();
+        btn.textContent = '❚❚';
+      } else {
+        audio.pause();
+        btn.textContent = '►';
+      }
+    });
+
+    vol.addEventListener('input', e => {
+      audio.volume = e.target.value;
+    });
+
+    // Autoplay fallback
+    window.addEventListener('load', () => {
+      audio.play().catch(()=> { btn.textContent='►'; });
+    });
+  </script>
+
 </body>
 </html>
