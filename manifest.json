@@ -1,0 +1,11 @@
+{
+  "name": "Radio La Tremenda",
+  "short_name": "La Tremenda",
+  "description": "Radio La Tremenda - Música en vivo 24/7",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#6a00ff",
+  "theme_color": "#ff0055",
+  "orientation": "portrait",
+  "icons": []
+}
