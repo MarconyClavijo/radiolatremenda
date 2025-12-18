@@ -118,7 +118,7 @@ footer{
   opacity:.7;
 }
 
-/* WHATSAPP */
+/* WhatsApp */
 .whatsapp{
   position:fixed;
   bottom:20px;
@@ -151,9 +151,8 @@ footer{
   <h1>LA TREMENDA</h1>
   <div class="live">🔴 EN VIVO</div>
 
-  <div class="song" id="song">
-    🎵 Sonando: <br>
-    <strong>Tu mejor música en vivo</strong>
+  <div class="song" id="nowplaying">
+    🎵 Cargando canción...
   </div>
 
   <div class="controls">
@@ -170,8 +169,8 @@ footer{
 
 <a class="whatsapp" href="https://wa.me/51942883375" target="_blank">💬</a>
 
-<audio id="radio" preload="none">
-  <source src="https://uk20freenew.listen2myradio.com/live.mp3?typeportmount=s1_17951_stream_983888271">
+<audio id="radio" preload="none" playsinline crossorigin="anonymous">
+  <source src="https://stream.zeno.fm/jfjyk4dnuc1vv" type="audio/mpeg">
 </audio>
 
 <script>
@@ -198,6 +197,18 @@ playBtn.onclick = () => {
 volume.oninput = () => {
   audio.volume = volume.value;
 };
+
+/* Canción actual desde Zeno */
+setInterval(()=>{
+  fetch("https://api.zeno.fm/station/jfjyk4dnuc1vv")
+    .then(r=>r.json())
+    .then(data=>{
+      if(data.now_playing){
+        document.getElementById("nowplaying").innerText =
+          "🎶 " + data.now_playing.song.text;
+      }
+    });
+},15000);
 </script>
 
 </body>
