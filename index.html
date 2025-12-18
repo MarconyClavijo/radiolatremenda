@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#ff0055">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Radio La Tremenda</title>
@@ -210,6 +212,10 @@ setInterval(()=>{
     });
 },15000);
 </script>
-
+<script>
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("sw.js");
+}
+</script>
 </body>
 </html>
