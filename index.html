@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#ff0055">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Radio La Tremenda</title>
+<title>Radio La Tremenda 106.5 FM</title>
+
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#ff0055">
 
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
 
@@ -16,7 +17,7 @@ body{
   background:
     radial-gradient(circle at top, #ff004c, transparent 60%),
     radial-gradient(circle at bottom, #6a00ff, #050010 70%);
-  height:100vh;
+  min-height:100vh;
   display:flex;
   justify-content:center;
   align-items:center;
@@ -25,16 +26,20 @@ body{
 
 .app{
   width:340px;
-  background:rgba(0,0,0,.65);
+  background:rgba(0,0,0,.7);
   border-radius:35px;
-  padding:30px 20px 35px;
-  box-shadow:0 0 60px rgba(255,0,120,.9);
+  padding:30px 20px 30px;
+  box-shadow:0 0 70px rgba(255,0,120,.9);
   text-align:center;
 }
 
+/* LOGO */
 .logo{
   width:220px;
-  filter:drop-shadow(0 0 25px #ff2a6d);
+  filter:
+    drop-shadow(0 0 6px #fff)
+    drop-shadow(0 0 18px #ff0055)
+    drop-shadow(0 0 35px rgba(255,0,85,.9));
 }
 
 .playing .logo{
@@ -49,6 +54,7 @@ body{
 h1{
   margin:15px 0 5px;
   font-size:2em;
+  letter-spacing:2px;
 }
 
 .live{
@@ -62,14 +68,16 @@ h1{
   50%{opacity:.4}
 }
 
+/* CANCIÓN */
 .song{
   margin:20px 0;
   font-size:.95em;
   background:rgba(255,255,255,.1);
-  padding:10px;
-  border-radius:15px;
+  padding:12px;
+  border-radius:18px;
 }
 
+/* PLAY */
 .controls{
   margin:25px 0;
 }
@@ -84,15 +92,18 @@ h1{
   color:white;
   box-shadow:0 0 45px #ff0055;
   cursor:pointer;
-  transition:.2s;
+  transition:.25s;
 }
 
 .play:hover{
   transform:scale(1.15);
+  box-shadow:0 0 65px #ff2a6d;
 }
 
+/* VOLUMEN */
 .volume{
   margin-top:20px;
+  font-size:.8em;
 }
 
 input[type=range]{
@@ -101,7 +112,6 @@ input[type=range]{
   height:6px;
   border-radius:5px;
   background:#ff77aa;
-  outline:none;
 }
 
 input[type=range]::-webkit-slider-thumb{
@@ -111,36 +121,57 @@ input[type=range]::-webkit-slider-thumb{
   border-radius:50%;
   background:#fff;
   box-shadow:0 0 10px #ff0055;
-  cursor:pointer;
+}
+
+/* REDES SOCIALES */
+.social{
+  display:flex;
+  justify-content:center;
+  gap:16px;
+  margin:30px 0;
+}
+
+.social a{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:14px 26px;
+  border-radius:40px;
+  font-weight:700;
+  text-decoration:none;
+  font-size:14px;
+  transition:.3s;
+}
+
+/* FACEBOOK */
+.facebook{
+  background:#1877F2;
+  color:white;
+  box-shadow:
+    0 0 6px #fff,
+    0 0 14px #1877F2,
+    0 0 28px rgba(24,119,242,.9);
+}
+
+/* WHATSAPP */
+.whatsapp{
+  background:#25D366;
+  color:#000;
+  box-shadow:
+    0 0 6px #fff,
+    0 0 14px #25D366,
+    0 0 28px rgba(37,211,102,.9);
+}
+
+.social a:hover{
+  transform:scale(1.08);
+  filter:brightness(1.15);
 }
 
 footer{
   margin-top:20px;
-  font-size:11px;
-  opacity:.7;
-}
-
-/* WhatsApp */
-.whatsapp{
-  position:fixed;
-  bottom:20px;
-  right:20px;
-  background:#25D366;
-  width:60px;
-  height:60px;
-  border-radius:50%;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  font-size:30px;
-  color:white;
-  text-decoration:none;
-  box-shadow:0 0 25px #25D366;
-  animation:pulse 2s infinite;
-}
-
-@keyframes pulse{
-  50%{transform:scale(1.1)}
+  font-size:10px;
+  opacity:.6;
 }
 </style>
 </head>
@@ -148,7 +179,8 @@ footer{
 <body>
 
 <div class="app" id="app">
-  <img src="https://imgfz.com/i/h7TrEm5.png" class="logo">
+
+  <img src="https://imgfz.com/i/h7TrEm5.png" class="logo" alt="Radio La Tremenda">
 
   <h1>LA TREMENDA</h1>
   <div class="live">🔴 EN VIVO</div>
@@ -166,10 +198,26 @@ footer{
     <input type="range" min="0" max="1" step="0.01" value="1" id="volume">
   </div>
 
-  <footer>Diseño web por Marcony Clavijo | © 2025</footer>
-</div>
+  <!-- REDES -->
+  <div class="social">
+    <a class="facebook" href="https://www.facebook.com/profile.php?id=61585616422921" target="_blank">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M22 12a10 10 0 1 0-11.6 9.9v-7h-2v-3h2V9.7c0-2 1.2-3.1 3-3.1.9 0 1.8.1 1.8.1v2h-1c-1 0-1.3.6-1.3 1.2V12h2.3l-.4 3h-1.9v7A10 10 0 0 0 22 12z"/>
+      </svg>
+      Facebook
+    </a>
 
-<a class="whatsapp" href="https://wa.me/51942883375" target="_blank">💬</a>
+    <a class="whatsapp" href="https://wa.me/51942883375" target="_blank">
+      <svg width="20" height="20" viewBox="0 0 32 32" fill="currentColor">
+        <path d="M16 3C9.4 3 4 8.2 4 14.7c0 2.6.9 5 2.4 7.1L4 29l7.4-2.3c2 .9 4.2 1.4 6.6 1.4 6.6 0 12-5.2 12-11.7S22.6 3 16 3z"/>
+      </svg>
+      WhatsApp
+    </a>
+  </div>
+
+  <footer>© 2026 Radio La Tremenda 106.5 FM · Diseño web: Marcony Clavijo</footer>
+
+</div>
 
 <audio id="radio" preload="none" playsinline crossorigin="anonymous">
   <source src="https://stream.zeno.fm/jfjyk4dnuc1vv" type="audio/mpeg">
@@ -196,11 +244,8 @@ playBtn.onclick = () => {
   }
 };
 
-volume.oninput = () => {
-  audio.volume = volume.value;
-};
+volume.oninput = () => audio.volume = volume.value;
 
-/* Canción actual desde Zeno */
 setInterval(()=>{
   fetch("https://api.zeno.fm/station/jfjyk4dnuc1vv")
     .then(r=>r.json())
@@ -212,10 +257,12 @@ setInterval(()=>{
     });
 },15000);
 </script>
+
 <script>
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker.register("sw.js");
 }
 </script>
+
 </body>
 </html>
