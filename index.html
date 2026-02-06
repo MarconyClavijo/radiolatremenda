@@ -24,6 +24,36 @@ body{
   100%{background-position:100% 50%}
 }
 
+/* ❌ BANDERINES ELIMINADOS */
+.flags{
+  display:none;
+}
+
+/* ✅ FRANJA DE TEXTO (SIN COLORES CHILLONES) */
+.marquee{
+  position:fixed;
+  top:0;
+  width:100%;
+  background:rgba(0,0,0,.45);
+  backdrop-filter:blur(4px);
+  color:#fff;
+  font-weight:900;
+  padding:6px 0;
+  overflow:hidden;
+  z-index:10;
+}
+
+.marquee span{
+  display:inline-block;
+  white-space:nowrap;
+  animation:scroll 14s linear infinite;
+}
+
+@keyframes scroll{
+  from{transform:translateX(100%)}
+  to{transform:translateX(-100%)}
+}
+
 /* ESCENARIO */
 .stage{
   min-height:100vh;
@@ -32,7 +62,7 @@ body{
   justify-content:center;
   align-items:center;
   text-align:center;
-  padding:60px 20px 80px;
+  padding:80px 20px 80px;
   box-sizing:border-box;
 }
 
@@ -190,6 +220,11 @@ h1{
 
 <body>
 
+<!-- FRANJA DE TEXTO -->
+<div class="marquee">
+  <span>🎉 LA TREMENDA 106.5 FM · CUMBIA SANJUANERA · LA RADIO DEL PUEBLO · DESDE MORROPÓN PARA EL MUNDO 🎉</span>
+</div>
+
 <div class="stage" id="app">
   <img src="https://imgfz.com/i/h7TrEm5.png" class="logo">
   <h1>LA TREMENDA</h1>
@@ -200,7 +235,7 @@ h1{
     <span></span><span></span><span></span><span></span><span></span>
   </div>
 
-  <button class="play" id="playBtn">▶ SONAR EN VIVO</button>
+  <button class="play" id="playBtn">▶ ESCÚCHANOS</button>
 
   <div class="volume">
     <input type="range" min="0" max="1" step="0.01" value="1" id="volume">
@@ -213,7 +248,7 @@ h1{
   <a href="https://wa.me/51942883375" target="_blank">WhatsApp</a>
 </div>
 
-<!-- FRANJA FIRMA -->
+<!-- FIRMA -->
 <div class="footer-credit">
   Diseño y desarrollo web por <strong>Marcony Clavijo</strong>
 </div>
@@ -245,7 +280,7 @@ playBtn.onclick=()=>{
     audio.pause();
     playing=false;
     app.classList.remove("playing");
-    playBtn.textContent="▶";
+    playBtn.textContent="▶ ESCÚCHANOS";
     liveText.textContent="⏸ EN PAUSA";
   }
 };
