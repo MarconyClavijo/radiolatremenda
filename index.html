@@ -5,41 +5,79 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Radio La Tremenda 106.5 FM</title>
 
-<link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#ff0055">
-
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800;900&display=swap" rel="stylesheet">
 
 <style>
 body{
   margin:0;
   font-family:'Orbitron',sans-serif;
-  background:
-    radial-gradient(circle at top, #ff004c, transparent 60%),
-    radial-gradient(circle at bottom, #6a00ff, #050010 70%);
   min-height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  color:#fff;
+  background:linear-gradient(135deg,#ffd500,#ff8c00,#ff3c00);
+  background-size:300% 300%;
+  animation:bgMove 12s infinite alternate;
+  color:#000;
+  overflow:hidden;
 }
 
-.app{
-  width:340px;
-  background:rgba(0,0,0,.7);
-  border-radius:35px;
-  padding:30px 20px;
-  box-shadow:0 0 70px rgba(255,0,120,.9);
+@keyframes bgMove{
+  0%{background-position:0% 50%}
+  100%{background-position:100% 50%}
+}
+
+/* BANDERINES */
+.flags{
+  position:fixed;
+  top:0;
+  width:100%;
+  height:60px;
+  background:repeating-linear-gradient(
+    135deg,
+    #ff0000 0 20px,
+    #ffd700 20px 40px,
+    #00c853 40px 60px
+  );
+  clip-path:polygon(0 0,100% 0,100% 60%,50% 100%,0 60%);
+}
+
+/* CINTA */
+.marquee{
+  position:fixed;
+  top:60px;
+  width:100%;
+  background:#ff0000;
+  color:#fff;
+  font-weight:900;
+  padding:6px 0;
+  overflow:hidden;
+}
+
+.marquee span{
+  display:inline-block;
+  white-space:nowrap;
+  animation:scroll 14s linear infinite;
+}
+
+@keyframes scroll{
+  from{transform:translateX(100%)}
+  to{transform:translateX(-100%)}
+}
+
+/* ESCENARIO */
+.stage{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
   text-align:center;
+  padding:120px 20px 40px;
+  box-sizing:border-box;
 }
 
 /* LOGO */
 .logo{
-  width:220px;
-  filter:
-    drop-shadow(0 0 6px #fff)
-    drop-shadow(0 0 18px #ff0055)
-    drop-shadow(0 0 35px rgba(255,0,85,.9));
+  width:210px;
+  filter:drop-shadow(0 0 20px #fff);
 }
 
 .playing .logo{
@@ -47,156 +85,175 @@ body{
 }
 
 @keyframes spin{
-  from{transform:rotate(0)}
   to{transform:rotate(360deg)}
 }
 
 h1{
-  margin:15px 0 5px;
-  font-size:2em;
-  letter-spacing:2px;
+  margin:8px 0 4px;
+  font-size:2.4em;
+  color:#ff0000;
+  text-shadow:0 0 10px #fff;
 }
 
-.live{
-  font-size:.9em;
-  letter-spacing:2px;
-  color:#ff9bd1;
-  animation:blink 1.4s infinite;
-}
-
-@keyframes blink{
-  50%{opacity:.4}
-}
-
-.song{
-  margin:20px 0;
+.slogan{
   font-size:.95em;
-  background:rgba(255,255,255,.1);
-  padding:12px;
-  border-radius:18px;
+  letter-spacing:3px;
 }
 
-.controls{
-  margin:25px 0;
+/* LIVE */
+.live{
+  margin-top:4px;
+  font-size:.9em;
+  font-weight:900;
+  color:#c00000;
 }
 
+/* ECUALIZADOR */
+.eq{
+  display:flex;
+  gap:6px;
+  margin:18px 0;
+  height:60px;
+}
+
+.eq span{
+  width:10px;
+  background:#ff0000;
+  transform-origin:bottom;
+  animation:equalize .6s infinite;
+  animation-play-state:paused;
+}
+
+.playing .eq span{
+  animation-play-state:running;
+}
+
+@keyframes equalize{
+  0%{height:15px}
+  50%{height:60px}
+  100%{height:20px}
+}
+
+/* BOTÓN */
 .play{
-  width:110px;
-  height:110px;
-  border-radius:50%;
+  margin-top:10px;
+  padding:18px 50px;
+  font-size:28px;
+  font-weight:900;
   border:none;
-  background:linear-gradient(45deg,#ff0055,#ff77aa);
-  font-size:45px;
-  color:white;
-  box-shadow:0 0 45px #ff0055;
+  background:#ff3c00;   /* naranja sanjuanero */
+  color:#fff;           /* icono blanco */
   cursor:pointer;
-  transition:.25s;
+  box-shadow:0 0 25px rgba(0,0,0,.4);
+  transition:.2s;
 }
 
 .play:hover{
-  transform:scale(1.15);
-  box-shadow:0 0 65px #ff2a6d;
+  transform:scale(1.08);
+  background:#ff0000;
 }
 
-.volume{
-  margin-top:20px;
-  font-size:.8em;
+/* LOADING */
+.play.loading{
+  background:#ccc;
+  color:#555;
+  cursor:not-allowed;
+  pointer-events:none;
 }
 
-input[type=range]{
-  -webkit-appearance:none;
-  width:100%;
-  height:6px;
-  border-radius:5px;
-  background:#ff77aa;
-}
-
-input[type=range]::-webkit-slider-thumb{
-  -webkit-appearance:none;
-  width:18px;
-  height:18px;
+.play.loading::after{
+  content:"";
+  display:block;
+  margin:10px auto 0;
+  width:22px;
+  height:22px;
+  border:4px solid #999;
+  border-top:4px solid #ff0000;
   border-radius:50%;
-  background:#fff;
-  box-shadow:0 0 10px #ff0055;
+  animation:spinLoad 1s linear infinite;
 }
 
+@keyframes spinLoad{
+  to{transform:rotate(360deg)}
+}
+
+/* VOLUMEN */
+.volume{
+  width:260px;
+  margin-top:16px;
+}
+
+/* BOTONES SOCIALES FLOTANTES */
 .social{
+  position:fixed;
+  right:12px;
+  bottom:70px;
   display:flex;
-  justify-content:center;
-  gap:16px;
-  margin:30px 0;
+  flex-direction:column;
+  gap:12px;
+  z-index:10;
 }
 
 .social a{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  padding:14px 26px;
-  border-radius:40px;
-  font-weight:700;
-  text-decoration:none;
-  font-size:14px;
-  transition:.3s;
-}
-
-.facebook{
-  background:#1877F2;
-  color:white;
-  box-shadow:0 0 28px rgba(24,119,242,.9);
-}
-
-.whatsapp{
-  background:#25D366;
+  padding:12px 18px;
+  background:#ffd700;
   color:#000;
-  box-shadow:0 0 28px rgba(37,211,102,.9);
+  text-decoration:none;
+  font-weight:900;
+  border-radius:30px;
+  box-shadow:0 0 12px rgba(0,0,0,.35);
 }
 
-.social a:hover{
-  transform:scale(1.08);
-  filter:brightness(1.15);
-}
-
-footer{
-  margin-top:20px;
-  font-size:10px;
-  opacity:.6;
+/* FIRMA */
+.footer-credit{
+  position:fixed;
+  bottom:6px;
+  width:100%;
+  text-align:center;
+  font-size:9px;
+  opacity:.7;
+  pointer-events:none;
 }
 </style>
 </head>
 
 <body>
 
-<div class="app" id="app">
+<div class="flags"></div>
 
-  <img src="https://imgfz.com/i/h7TrEm5.png" class="logo" alt="Radio La Tremenda">
-
-  <h1>LA TREMENDA</h1>
-  <div class="live">🔴 EN VIVO</div>
-
-  <div class="song" id="nowplaying">
-    🎵 Cargando canción...
-  </div>
-
-  <div class="controls">
-    <button class="play" id="playBtn">▶</button>
-  </div>
-
-  <div class="volume">
-    🔊 Volumen
-    <input type="range" min="0" max="1" step="0.01" value="1" id="volume">
-  </div>
-
-  <div class="social">
-    <a class="facebook" href="https://www.facebook.com/profile.php?id=61585616422921" target="_blank">Facebook</a>
-    <a class="whatsapp" href="https://wa.me/51942883375" target="_blank">WhatsApp</a>
-  </div>
-
-  <footer>© 2026 Radio La Tremenda 106.5 FM · Diseño web: Marcony Clavijo</footer>
-
+<div class="marquee">
+  <span>🎉 LA TREMENDA 106.5 FM · CUMBIA SANJUANERA · LA RADIO DEL PUEBLO · DESDE MORROPON PARA EL MUNDO 🎉</span>
 </div>
 
-<!-- AUDIO OPTIMIZADO PARA iOS / ANDROID -->
-<audio id="radio" preload="none" playsinline webkit-playsinline crossorigin="anonymous">
+<div class="stage" id="app">
+  <img src="https://imgfz.com/i/h7TrEm5.png" class="logo">
+  <h1>LA TREMENDA</h1>
+  <div class="slogan">LA RADIO DEL PUEBLO</div>
+  <div class="live" id="liveText">🔴 EN VIVO</div>
+
+  <div class="eq">
+    <span></span><span></span><span></span><span></span><span></span>
+  </div>
+
+  <button class="play" id="playBtn">▶ SONAR EN VIVO</button>
+
+  <div class="volume">
+    <input type="range" min="0" max="1" step="0.01" value="1" id="volume">
+  </div>
+</div>
+
+<!-- BOTONES -->
+<div class="social">
+  <a href="https://www.facebook.com/profile.php?id=61585616422921" target="_blank">Facebook</a>
+  <a href="https://wa.me/51942883375" target="_blank">WhatsApp</a>
+</div>
+
+<!-- FIRMA -->
+<div class="footer-credit">
+  Diseño y desarrollo web por <strong>Marcony Clavijo</strong>
+</div>
+
+<audio id="radio" preload="none">
   <source src="https://stream.zeno.fm/jfjyk4dnuc1vv" type="audio/mpeg">
 </audio>
 
@@ -205,44 +262,47 @@ const audio = document.getElementById("radio");
 const playBtn = document.getElementById("playBtn");
 const app = document.getElementById("app");
 const volume = document.getElementById("volume");
-const nowplaying = document.getElementById("nowplaying");
+const liveText = document.getElementById("liveText");
 
-playBtn.onclick = () => {
-  if(audio.paused){
+let playing=false, loading=false;
+
+playBtn.onclick=()=>{
+  if(loading) return;
+
+  if(!playing){
+    loading=true;
+    playBtn.classList.add("loading");
     playBtn.textContent="⏳";
-    audio.play().then(()=>{
-      playBtn.textContent="⏸";
-      app.classList.add("playing");
-    }).catch(()=>{
-      playBtn.textContent="▶";
-      alert("⚠️ No se pudo reproducir la radio. Intenta nuevamente.");
-    });
+    liveText.textContent="⏳ Conectando…";
+    audio.load();
+    audio.play().catch(reset);
   }else{
     audio.pause();
-    playBtn.textContent="▶";
+    playing=false;
     app.classList.remove("playing");
+    playBtn.textContent="▶";
+    liveText.textContent="⏸ EN PAUSA";
   }
 };
 
-volume.oninput = () => audio.volume = volume.value;
+audio.onplaying=()=>{
+  loading=false;
+  playing=true;
+  playBtn.classList.remove("loading");
+  playBtn.textContent="⏸";
+  liveText.textContent="🔴 EN VIVO (TIEMPO REAL)";
+  app.classList.add("playing");
+};
 
-// CANCIÓN ACTUAL (PROTEGIDO)
-setInterval(()=>{
-  fetch("https://api.zeno.fm/station/jfjyk4dnuc1vv/now_playing")
-    .then(r=>r.json())
-    .then(data=>{
-      if(data?.now_playing?.song?.text){
-        nowplaying.innerText = "🎶 " + data.now_playing.song.text;
-      }
-    })
-    .catch(()=>{});
-},15000);
-</script>
-
-<script>
-if ("serviceWorker" in navigator) {
-  navigator.serviceWorker.register("sw.js");
+function reset(){
+  loading=false;
+  playing=false;
+  playBtn.classList.remove("loading");
+  playBtn.textContent="▶ SONAR EN VIVO";
+  liveText.textContent="⚠️ Error de conexión";
 }
+
+volume.oninput=()=>audio.volume=volume.value;
 </script>
 
 </body>
