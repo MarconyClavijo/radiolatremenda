@@ -24,44 +24,6 @@ body{
   100%{background-position:100% 50%}
 }
 
-/* BANDERINES */
-.flags{
-  position:fixed;
-  top:0;
-  width:100%;
-  height:60px;
-  background:repeating-linear-gradient(
-    135deg,
-    #ff0000 0 20px,
-    #ffd700 20px 40px,
-    #00c853 40px 60px
-  );
-  clip-path:polygon(0 0,100% 0,100% 60%,50% 100%,0 60%);
-}
-
-/* CINTA */
-.marquee{
-  position:fixed;
-  top:60px;
-  width:100%;
-  background:#ff0000;
-  color:#fff;
-  font-weight:900;
-  padding:6px 0;
-  overflow:hidden;
-}
-
-.marquee span{
-  display:inline-block;
-  white-space:nowrap;
-  animation:scroll 14s linear infinite;
-}
-
-@keyframes scroll{
-  from{transform:translateX(100%)}
-  to{transform:translateX(-100%)}
-}
-
 /* ESCENARIO */
 .stage{
   min-height:100vh;
@@ -70,7 +32,7 @@ body{
   justify-content:center;
   align-items:center;
   text-align:center;
-  padding:120px 20px 40px;
+  padding:60px 20px 80px;
   box-sizing:border-box;
 }
 
@@ -138,20 +100,15 @@ h1{
 .play{
   margin-top:10px;
   padding:18px 50px;
-  font-size:28px;      /* un poco más grande para que luzca */
+  font-size:28px;
   font-weight:900;
   border:none;
-  background:#00c853;  /* VERDE original */
-  color:#fff;          /* ICONO BLANCO */
+  background:#00c853;
+  color:#fff;
   cursor:pointer;
   box-shadow:0 0 25px rgba(0,0,0,.4);
   transition:.2s;
 }
-
-.play:hover{
-  transform:scale(1.08);
-}
-
 
 .play:hover{
   transform:scale(1.08);
@@ -188,11 +145,11 @@ h1{
   margin-top:16px;
 }
 
-/* BOTONES SOCIALES FLOTANTES */
+/* BOTONES SOCIALES */
 .social{
   position:fixed;
   right:12px;
-  bottom:70px;
+  bottom:90px;
   display:flex;
   flex-direction:column;
   gap:12px;
@@ -209,26 +166,29 @@ h1{
   box-shadow:0 0 12px rgba(0,0,0,.35);
 }
 
-/* FIRMA */
+/* FRANJA INFERIOR */
 .footer-credit{
   position:fixed;
-  bottom:6px;
+  bottom:0;
   width:100%;
+  background:linear-gradient(90deg,#000000cc,#00000099,#000000cc);
+  backdrop-filter:blur(4px);
   text-align:center;
-  font-size:9px;
-  opacity:.7;
-  pointer-events:none;
+  padding:6px 0;
+  font-size:10px;
+  letter-spacing:1px;
+  color:#fff;
+  z-index:5;
+}
+
+.footer-credit strong{
+  color:#00c853;
+  text-shadow:0 0 6px rgba(0,200,83,.8);
 }
 </style>
 </head>
 
 <body>
-
-<div class="flags"></div>
-
-<div class="marquee">
-  <span>🎉 LA TREMENDA 106.5 FM · CUMBIA SANJUANERA · LA RADIO DEL PUEBLO · DESDE MORROPON PARA EL MUNDO 🎉</span>
-</div>
 
 <div class="stage" id="app">
   <img src="https://imgfz.com/i/h7TrEm5.png" class="logo">
@@ -253,7 +213,7 @@ h1{
   <a href="https://wa.me/51942883375" target="_blank">WhatsApp</a>
 </div>
 
-<!-- FIRMA -->
+<!-- FRANJA FIRMA -->
 <div class="footer-credit">
   Diseño y desarrollo web por <strong>Marcony Clavijo</strong>
 </div>
@@ -303,7 +263,7 @@ function reset(){
   loading=false;
   playing=false;
   playBtn.classList.remove("loading");
-  playBtn.textContent="▶ ESCUCHANOS";
+  playBtn.textContent="▶ ESCÚCHANOS";
   liveText.textContent="⚠️ Error de conexión";
 }
 
