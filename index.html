@@ -24,12 +24,6 @@ body{
   100%{background-position:100% 50%}
 }
 
-/* ❌ BANDERINES ELIMINADOS */
-.flags{
-  display:none;
-}
-
-/* ✅ FRANJA ROJA CON TEXTO CORRIENDO (SE QUEDA) */
 .marquee{
   position:fixed;
   top:0;
@@ -53,7 +47,6 @@ body{
   to{transform:translateX(-100%)}
 }
 
-/* ESCENARIO */
 .stage{
   min-height:100vh;
   display:flex;
@@ -65,7 +58,6 @@ body{
   box-sizing:border-box;
 }
 
-/* LOGO */
 .logo{
   width:210px;
   filter:drop-shadow(0 0 20px #fff);
@@ -91,7 +83,6 @@ h1{
   letter-spacing:3px;
 }
 
-/* LIVE */
 .live{
   margin-top:4px;
   font-size:.9em;
@@ -99,7 +90,6 @@ h1{
   color:#c00000;
 }
 
-/* ECUALIZADOR */
 .eq{
   display:flex;
   gap:6px;
@@ -125,28 +115,31 @@ h1{
   100%{height:20px}
 }
 
-/* BOTÓN */
-.play{
+/* 🔒 BOTÓN SIEMPRE VERDE */
+.play,
+.play:hover,
+.play:active,
+.play:focus{
   margin-top:10px;
   padding:18px 50px;
   font-size:28px;
   font-weight:900;
   border:none;
-  background:#00c853;
+  background:#00c853 !important;
   color:#fff;
   cursor:pointer;
   box-shadow:0 0 25px rgba(0,0,0,.4);
-  transition:.2s;
+  transition:transform .2s;
+  outline:none;
 }
 
 .play:hover{
   transform:scale(1.08);
-  background:#ff0000;
 }
 
 /* LOADING */
 .play.loading{
-  background:#ccc;
+  background:#ccc !important;
   color:#555;
   cursor:not-allowed;
   pointer-events:none;
@@ -159,7 +152,7 @@ h1{
   width:22px;
   height:22px;
   border:4px solid #999;
-  border-top:4px solid #ff0000;
+  border-top:4px solid #00c853;
   border-radius:50%;
   animation:spinLoad 1s linear infinite;
 }
@@ -168,13 +161,11 @@ h1{
   to{transform:rotate(360deg)}
 }
 
-/* VOLUMEN */
 .volume{
   width:260px;
   margin-top:16px;
 }
 
-/* BOTONES SOCIALES */
 .social{
   position:fixed;
   right:12px;
@@ -195,7 +186,6 @@ h1{
   box-shadow:0 0 12px rgba(0,0,0,.35);
 }
 
-/* FRANJA INFERIOR FIRMA */
 .footer-credit{
   position:fixed;
   bottom:0;
@@ -219,7 +209,6 @@ h1{
 
 <body>
 
-<!-- FRANJA ROJA -->
 <div class="marquee">
   <span>🎉 LA TREMENDA 106.5 FM · CUMBIA SANJUANERA · LA RADIO DEL PUEBLO · DESDE MORROPON PARA EL MUNDO 🎉</span>
 </div>
@@ -241,15 +230,13 @@ h1{
   </div>
 </div>
 
-<!-- BOTONES -->
 <div class="social">
   <a href="https://www.facebook.com/profile.php?id=61585616422921" target="_blank">Facebook</a>
   <a href="https://wa.me/51942883375" target="_blank">WhatsApp</a>
 </div>
 
-<!-- FIRMA -->
 <div class="footer-credit">
-  Diseño y desarrollo web por <strong>Marcony Clavijo</strong>942883375
+  Diseño y desarrollo web por <strong>Marcony Clavijo</strong> 942883375
 </div>
 
 <audio id="radio" preload="none">
