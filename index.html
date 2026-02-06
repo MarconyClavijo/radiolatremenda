@@ -29,13 +29,12 @@ body{
   display:none;
 }
 
-/* ✅ FRANJA DE TEXTO (SIN COLORES CHILLONES) */
+/* ✅ FRANJA ROJA CON TEXTO CORRIENDO (SE QUEDA) */
 .marquee{
   position:fixed;
   top:0;
   width:100%;
-  background:rgba(0,0,0,.45);
-  backdrop-filter:blur(4px);
+  background:#ff0000;
   color:#fff;
   font-weight:900;
   padding:6px 0;
@@ -62,7 +61,7 @@ body{
   justify-content:center;
   align-items:center;
   text-align:center;
-  padding:80px 20px 80px;
+  padding:90px 20px 90px;
   box-sizing:border-box;
 }
 
@@ -196,7 +195,7 @@ h1{
   box-shadow:0 0 12px rgba(0,0,0,.35);
 }
 
-/* FRANJA INFERIOR */
+/* FRANJA INFERIOR FIRMA */
 .footer-credit{
   position:fixed;
   bottom:0;
@@ -220,9 +219,9 @@ h1{
 
 <body>
 
-<!-- FRANJA DE TEXTO -->
+<!-- FRANJA ROJA -->
 <div class="marquee">
-  <span>🎉 LA TREMENDA 106.5 FM · CUMBIA SANJUANERA · LA RADIO DEL PUEBLO · DESDE MORROPÓN PARA EL MUNDO 🎉</span>
+  <span>🎉 LA TREMENDA 106.5 FM · CUMBIA SANJUANERA · LA RADIO DEL PUEBLO · DESDE MORROPON PARA EL MUNDO 🎉</span>
 </div>
 
 <div class="stage" id="app">
@@ -280,7 +279,7 @@ playBtn.onclick=()=>{
     audio.pause();
     playing=false;
     app.classList.remove("playing");
-    playBtn.textContent="▶";
+    playBtn.textContent="▶ ESCÚCHANOS";
     liveText.textContent="⏸ EN PAUSA";
   }
 };
@@ -298,7 +297,7 @@ function reset(){
   loading=false;
   playing=false;
   playBtn.classList.remove("loading");
-  playBtn.textContent="▶ ESCÚCHANOS";
+  playBtn.textContent="▶";
   liveText.textContent="⚠️ Error de conexión";
 }
 
