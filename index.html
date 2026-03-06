@@ -63,8 +63,15 @@ body{
 
 .status{
   font-weight:bold;
-  margin-bottom:10px;
+  margin-bottom:5px;
   color:#0f0;
+}
+
+.song{
+  font-size:14px;
+  margin-bottom:10px;
+  color:#fff;
+  opacity:.9;
 }
 
 .play{
@@ -137,12 +144,10 @@ input[type=range]{
 
 .facebook{
   background:#1877f2;
-  box-shadow:0 0 15px rgba(24,119,242,.7);
 }
 
 .whatsapp{
   background:#00bb2d;
-  box-shadow:0 0 15px rgba(0,187,45,.7);
 }
 
 .social-box:hover{
@@ -163,40 +168,51 @@ input[type=range]{
 
 <div class="app" id="app">
 
-  <div class="title">LA TREMENDA 106.5 FM</div>
+<div class="title">LA TREMENDA 106.5 FM</div>
 
-  <img src="https://imgfz.com/i/h7TrEm5.png" class="logo">
+<img src="https://imgfz.com/i/h7TrEm5.png" class="logo">
 
-  <div class="player-box">
+<div class="player-box">
 
-    <div class="status" id="estado">🔴 EN VIVO</div>
+<div class="status" id="estado">🔴 EN VIVO</div>
 
-    <div class="eq">
-      <span></span><span></span><span></span><span></span><span></span>
-    </div>
+<!-- NOMBRE DE LA CANCIÓN -->
+<div class="song">
+<span id="sonic_title">Cargando canción...</span>
+</div>
 
-    <button class="play" id="btn">▶ PLAY</button>
+<div class="eq">
+<span></span><span></span><span></span><span></span><span></span>
+</div>
 
-    <div class="volume">
-      <input type="range" min="0" max="1" step="0.01" value="1" id="volumen">
-    </div>
+<button class="play" id="btn">▶ PLAY</button>
 
-  </div>
+<div class="volume">
+<input type="range" min="0" max="1" step="0.01" value="1" id="volumen">
+</div>
 
-  <div class="social-container">
-    <a class="social-box facebook" href="https://www.facebook.com/profile.php?id=61585616422921" target="_blank">
-      Facebook
-    </a>
+</div>
 
-    <a class="social-box whatsapp" href="https://wa.me/51942883375" target="_blank">
-      WhatsApp
-    </a>
-  </div>
+<div class="social-container">
+
+<a class="social-box facebook"
+href="https://www.facebook.com/profile.php?id=61585616422921"
+target="_blank">
+Facebook
+</a>
+
+<a class="social-box whatsapp"
+href="https://wa.me/51942883375"
+target="_blank">
+WhatsApp
+</a>
+
+</div>
 
 </div>
 
 <div class="footer">
-  Diseño por Marcony Clavijo – Radio La Tremenda
+Diseño por Marcony Clavijo – Radio La Tremenda
 </div>
 
 <script>
@@ -209,61 +225,62 @@ let audio = null;
 let sonando = false;
 
 function crearAudio() {
-  // Elimina cualquier audio anterior
-  if (audio) {
-    audio.pause();
-    audio.src = "";
-    audio.load();
-  }
 
-  // Crea un audio NUEVO – sin nada en buffer
-  audio = new Audio("https://sonic.globalstream.pro/8080/stream");
-  audio.preload = "none";
-  audio.volume = vol.value;
+if (audio) {
+audio.pause();
+audio.src = "";
+audio.load();
+}
+
+audio = new Audio("https://sonic.globalstream.pro/8080/stream");
+audio.preload = "none";
+audio.volume = vol.value;
 }
 
 btn.onclick = () => {
 
-  if (!sonando) {
+if (!sonando) {
 
-    crearAudio();
+crearAudio();
 
-    estado.textContent = "⏳ Conectando en vivo...";
-    btn.textContent = "⏳";
+estado.textContent = "⏳ Conectando en vivo...";
+btn.textContent = "⏳";
 
-    audio.play()
-      .then(() => {
-        estado.textContent = "🎧 EN VIVO - TIEMPO REAL";
-        btn.textContent = "⏸ DETENER";
-        app.classList.add("playing");
-        sonando = true;
-      })
-      .catch(() => {
-        estado.textContent = "⚠️ Error de conexión";
-        btn.textContent = "▶ REPRODUCIR";
-        sonando = false;
-      });
+audio.play()
+.then(() => {
+estado.textContent = "🎧 EN VIVO - TIEMPO REAL";
+btn.textContent = "⏸ DETENER";
+app.classList.add("playing");
+sonando = true;
+})
+.catch(() => {
+estado.textContent = "⚠️ Error de conexión";
+btn.textContent = "▶ REPRODUCIR";
+sonando = false;
+});
 
-  } else {
+} else {
 
-    // CORTE TOTAL DEL STREAMING
-    audio.pause();
-    audio.src = "";
-    audio.load();
+audio.pause();
+audio.src = "";
+audio.load();
 
-    estado.textContent = "⏹ TRANSMISIÓN DETENIDA";
-    btn.textContent = "▶ REPRODUCIR";
-    app.classList.remove("playing");
+estado.textContent = "⏹ TRANSMISIÓN DETENIDA";
+btn.textContent = "▶ REPRODUCIR";
+app.classList.remove("playing");
 
-    sonando = false;
-  }
+sonando = false;
+}
 
 };
 
 vol.oninput = () => {
-  if (audio) audio.volume = vol.value;
+if (audio) audio.volume = vol.value;
 };
 </script>
+
+<!-- WIDGET CANCIÓN EN VIVO -->
+<script id='sonic_js' data-port='8080' src='https://sonic.globalstream.pro/cp/widgets.js?r=545'></script>
 
 </body>
 </html>
