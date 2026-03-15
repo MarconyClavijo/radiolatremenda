@@ -1,166 +1,170 @@
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>La Tremenda 106.5 FM</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap" rel="stylesheet">
 
 <style>
+
 body{
-  margin:0;
-  font-family:'Poppins',sans-serif;
-  min-height:100vh;
-  background:linear-gradient(140deg,#ff0000,#ff7300,#ffc400);
-  background-size:300% 300%;
-  animation:fondo 10s ease infinite;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  flex-direction:column;
+margin:0;
+font-family:'Poppins',sans-serif;
+min-height:100vh;
+background:linear-gradient(140deg,#ff0000,#ff7300,#ffc400);
+background-size:300% 300%;
+animation:fondo 10s ease infinite;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
 }
 
 @keyframes fondo{
-  0%{background-position:0% 50%}
-  50%{background-position:100% 50%}
-  100%{background-position:0% 50%}
+0%{background-position:0% 50%}
+50%{background-position:100% 50%}
+100%{background-position:0% 50%}
 }
 
 .app{
-  width:92%;
-  max-width:420px;
-  background:rgba(0,0,0,.55);
-  backdrop-filter:blur(12px);
-  border-radius:30px;
-  padding:25px 20px;
-  box-shadow:0 0 40px rgba(0,0,0,.6);
-  text-align:center;
-  color:#fff;
-  margin-top:20px;
+width:92%;
+max-width:420px;
+background:rgba(0,0,0,.55);
+backdrop-filter:blur(12px);
+border-radius:30px;
+padding:25px 20px;
+box-shadow:0 0 40px rgba(0,0,0,.6);
+text-align:center;
+color:#fff;
+margin-top:20px;
 }
 
 .title{
-  font-size:28px;
-  font-weight:900;
-  margin-bottom:5px;
-  text-shadow:0 0 10px #ff0000;
+font-size:28px;
+font-weight:900;
+margin-bottom:5px;
+text-shadow:0 0 10px #ff0000;
 }
 
 .logo{
-  width:170px;
-  margin:10px 0;
-  filter:drop-shadow(0 0 10px #fff);
+width:170px;
+margin:10px 0;
+filter:drop-shadow(0 0 10px #fff);
 }
 
 .player-box{
-  background:rgba(255,255,255,.12);
-  border:2px solid rgba(255,255,255,.2);
-  border-radius:20px;
-  padding:20px;
-  margin-top:10px;
+background:rgba(255,255,255,.12);
+border:2px solid rgba(255,255,255,.2);
+border-radius:20px;
+padding:20px;
+margin-top:10px;
 }
 
 .status{
-  font-weight:bold;
-  margin-bottom:5px;
-  color:#0f0;
+font-weight:bold;
+margin-bottom:5px;
+color:#0f0;
 }
 
 .song{
-  font-size:14px;
-  margin-bottom:10px;
-  color:#fff;
-  opacity:.9;
+font-size:14px;
+margin-bottom:10px;
+color:#fff;
+opacity:.9;
 }
 
 .play{
-  padding:20px;
-  width:100%;
-  font-size:28px;
-  font-weight:900;
-  border:none;
-  border-radius:15px;
-  background:#00d95f;
-  color:#fff;
-  cursor:pointer;
-  transition:.3s;
-  box-shadow:0 0 20px rgba(0,255,100,.6);
+padding:20px;
+width:100%;
+font-size:28px;
+font-weight:900;
+border:none;
+border-radius:15px;
+background:#00d95f;
+color:#fff;
+cursor:pointer;
+transition:.3s;
+box-shadow:0 0 20px rgba(0,255,100,.6);
 }
 
 .play:hover{
-  transform:scale(1.05);
+transform:scale(1.05);
 }
 
 .volume{
-  margin-top:15px;
+margin-top:15px;
 }
 
 input[type=range]{
-  width:100%;
+width:100%;
 }
 
 .eq{
-  display:flex;
-  justify-content:center;
-  gap:6px;
-  margin:15px 0;
-  height:40px;
+display:flex;
+justify-content:center;
+gap:6px;
+margin:15px 0;
+height:40px;
 }
 
 .eq span{
-  width:8px;
-  background:#00ff00;
-  animation:eco .7s infinite;
-  animation-play-state:paused;
+width:8px;
+background:#00ff00;
+animation:eco .7s infinite;
+animation-play-state:paused;
 }
 
 .playing .eq span{
-  animation-play-state:running;
+animation-play-state:running;
 }
 
 @keyframes eco{
-  0%{height:10px}
-  50%{height:40px}
-  100%{height:15px}
+0%{height:10px}
+50%{height:40px}
+100%{height:15px}
 }
 
 .social-container{
-  display:flex;
-  gap:10px;
-  margin-top:15px;
+display:flex;
+gap:10px;
+margin-top:15px;
 }
 
 .social-box{
-  flex:1;
-  padding:15px;
-  border-radius:15px;
-  font-weight:bold;
-  text-decoration:none;
-  color:#fff;
-  text-align:center;
-  transition:.3s;
+flex:1;
+padding:15px;
+border-radius:15px;
+font-weight:bold;
+text-decoration:none;
+color:#fff;
+text-align:center;
+transition:.3s;
 }
 
 .facebook{
-  background:#1877f2;
+background:#1877f2;
 }
 
 .whatsapp{
-  background:#00bb2d;
+background:#00bb2d;
 }
 
 .social-box:hover{
-  transform:scale(1.06);
+transform:scale(1.06);
 }
 
 .footer{
-  margin-top:10px;
-  color:#fff;
-  font-size:12px;
-  opacity:.8;
-  text-align:center;
+margin-top:10px;
+color:#fff;
+font-size:12px;
+opacity:.8;
+text-align:center;
 }
+
 </style>
 </head>
 
@@ -176,7 +180,6 @@ input[type=range]{
 
 <div class="status" id="estado">🔴 EN VIVO</div>
 
-<!-- NOMBRE DE LA CANCIÓN -->
 <div class="song">
 <span id="sonic_title">Cargando canción...</span>
 </div>
@@ -216,71 +219,92 @@ Diseño por Marcony Clavijo – Radio La Tremenda
 </div>
 
 <script>
+
 const btn = document.getElementById("btn");
 const estado = document.getElementById("estado");
 const app = document.getElementById("app");
 const vol = document.getElementById("volumen");
 
-let audio = null;
-let sonando = false;
+let audio=null;
+let sonando=false;
 
-function crearAudio() {
+function crearAudio(){
 
-if (audio) {
+if(audio){
 audio.pause();
-audio.src = "";
+audio.src="";
 audio.load();
 }
 
-audio = new Audio("https://sonic.globalstream.pro/8080/stream");
-audio.preload = "none";
-audio.volume = vol.value;
+audio=new Audio();
+
+/* NUEVO STREAM */
+audio.src="https://radiostreaming.pro/8238/stream?"+Date.now();
+
+audio.crossOrigin="anonymous";
+audio.preload="auto";
+audio.volume=vol.value;
+
 }
 
-btn.onclick = () => {
+btn.onclick=()=>{
 
-if (!sonando) {
+if(!sonando){
 
 crearAudio();
 
-estado.textContent = "⏳ Conectando en vivo...";
-btn.textContent = "⏳";
+estado.textContent="⏳ Conectando en vivo...";
+btn.textContent="⏳";
 
 audio.play()
-.then(() => {
-estado.textContent = "🎧 EN VIVO - TIEMPO REAL";
-btn.textContent = "⏸ DETENER";
+.then(()=>{
+
+estado.textContent="🎧 EN VIVO - TIEMPO REAL";
+btn.textContent="⏸ DETENER";
+
 app.classList.add("playing");
-sonando = true;
+
+sonando=true;
+
 })
-.catch(() => {
-estado.textContent = "⚠️ Error de conexión";
-btn.textContent = "▶ REPRODUCIR";
-sonando = false;
+.catch(()=>{
+
+estado.textContent="⚠️ Error de conexión";
+btn.textContent="▶ REPRODUCIR";
+
+sonando=false;
+
 });
 
-} else {
+}else{
 
 audio.pause();
-audio.src = "";
+audio.src="";
 audio.load();
 
-estado.textContent = "⏹ TRANSMISIÓN DETENIDA";
-btn.textContent = "▶ REPRODUCIR";
+estado.textContent="⏹ TRANSMISIÓN DETENIDA";
+btn.textContent="▶ REPRODUCIR";
+
 app.classList.remove("playing");
 
-sonando = false;
+sonando=false;
+
 }
 
 };
 
-vol.oninput = () => {
-if (audio) audio.volume = vol.value;
+vol.oninput=()=>{
+
+if(audio) audio.volume=vol.value;
+
 };
+
 </script>
 
-<!-- WIDGET CANCIÓN EN VIVO -->
-<script id='sonic_js' data-port='8080' src='https://sonic.globalstream.pro/cp/widgets.js?r=545'></script>
+<script id='sonic_js' data-port='8238'
+src='https://radiostreaming.pro/cp/widgets.js'>
+</script>
 
 </body>
 </html>
+```
